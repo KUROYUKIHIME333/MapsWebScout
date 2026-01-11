@@ -1,0 +1,1 @@
+export const placeNearbyApiUrl = 'https://places.googleapis.com/v1/places:searchNearby';
