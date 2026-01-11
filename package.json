@@ -15,10 +15,13 @@
   "dependencies": {
     "@fastify/env": "^5.0.3",
     "@fastify/formbody": "^8.0.2",
+    "@fastify/static": "^9.0.0",
     "@fastify/view": "^11.1.1",
     "@google/genai": "^1.35.0",
+    "axios": "^1.13.2",
     "ejs": "^3.1.10",
-    "fastify": "^5.6.2"
+    "fastify": "^5.6.2",
+    "fastify-plugin": "^5.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
