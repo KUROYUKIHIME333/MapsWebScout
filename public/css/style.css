@@ -1,0 +1,106 @@
+:root {
+	--primary: #732c3f;
+	--accent-soft: #e1afb8;
+	--bg-color: #f7e8ec;
+	--white: #ffffff;
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--primary);
+	font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	max-width: 900px;
+	margin: 2rem auto;
+	padding: 0 1rem;
+}
+
+.card {
+	background: var(--white);
+	padding: 1.5rem;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(115, 44, 63, 0.1);
+	margin-bottom: 1.5rem;
+}
+
+/* Formulaire & Inputs */
+label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+
+input[type='number'] {
+	width: 100%;
+	padding: 0.7rem;
+	margin-bottom: 1.5rem;
+	border: 1px solid var(--accent-soft);
+	border-radius: 4px;
+	box-sizing: border-box;
+	font-size: 1rem;
+}
+
+/* Système de Chips */
+.chips-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 1.5rem;
+}
+
+.chip {
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--accent-soft);
+	border-radius: 20px;
+	background: var(--white);
+	cursor: pointer;
+	transition: all 0.2s ease;
+	user-select: none;
+}
+
+.chip.active {
+	background: var(--primary);
+	color: var(--white);
+	border-color: var(--primary);
+}
+
+/* Résultats */
+.results-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 1rem;
+}
+
+.badge-no-web {
+	color: var(--primary);
+	font-weight: bold;
+	background: #ffebee;
+	padding: 4px 10px;
+	border-radius: 4px;
+	font-size: 0.75rem;
+}
+
+.bolder-text {
+	font-weight: 700;
+}
+
+.btn-action {
+	width: 100%;
+	background: var(--primary);
+	color: white;
+	border: none;
+	padding: 0.8rem;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight: bold;
+	margin-top: 1rem;
+}
+
+.btn-action:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
