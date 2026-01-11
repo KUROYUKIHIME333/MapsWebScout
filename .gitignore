@@ -1,0 +1,29 @@
+# --- DÉPENDANCES ---
+node_modules/
+.pnpm-store/
+
+# --- SÉCURITÉ / CONFIG (mes secrets) ---
+.env
+.env.local
+.env.*.local
+
+# --- LOGS ---
+# Fichiers de log générés par Fastify ou Node
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# --- SYSTÈME ---
+# Fichiers inutiles générés par l'OS
+.DS_Store
+Thumbs.db
+
+# --- TEST / COUVERTURE ---
+coverage/
+.nyc_output/
+
+# --- BUILD (Si on utilise TypeScript ou un bundler plus tard) ---
+dist/
+build/
