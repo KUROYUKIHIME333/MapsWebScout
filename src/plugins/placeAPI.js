@@ -35,6 +35,8 @@ export default fp(async (fastify) => {
 
 			const response = await axios.post(placeNearbyApiUrl, payload, { headers });
 
+			console.log("Réponse complète de l'API Google Places:", response.data); //TODO: Supprimer après débogage
+
 			// Sécurité : Si Google ne trouve rien, 'places' peut être undefined
 			const allPlaces = response.data.places || [];
 
