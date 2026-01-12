@@ -1,8 +1,65 @@
 :root {
-	--primary: #732c3f;
-	--accent-soft: #e1afb8;
-	--bg-color: #f7e8ec;
-	--white: #ffffff;
+	/* --primary: #1A0B12;
+	--accent-soft: #732C3F;
+	--bg-color: #C57C8A;
+	--white: #F7E8EC; */
+
+	/* --primary: #5A3C0B;
+	--accent-soft: #C48B28;
+	--bg-color: #EBC176;
+	--white: #FFF5E1; */
+
+	/* Assez propres, mais trop formel je trouve */
+	--primary: #0d2440;
+	--accent-soft: #2e5e99;
+	--bg-color: #7ba4d0;
+	--white: #e7f0fa;
+
+	/* --primary: #576238;
+	--accent-soft: #ffd95d;
+	--bg-color: #f0eadc;
+	--white: #ffffff; */
+
+	/* --primary: #461312;
+	--accent-soft: #ed809d;
+	--bg-color: #c9c769;
+	--white: #ffffff; */
+
+	/* --primary: #162660;
+	--accent-soft: #d0e6fd;
+	--bg-color: #f1e4d1;
+	--white: #ffffff; */
+
+	/* --primary: #7c1f31;
+	--accent-soft: #69a481;
+	--bg-color: #e7edeb;
+	--white: #ffffff; */
+
+	/* --primary: #7c1f31;
+	--accent-soft: #e7edeb;
+	--bg-color: #69a481;
+	--white: #ffffff; */
+
+	/* Assez propres, class meme */
+	/* --primary: #6f6134;
+	--accent-soft: #e1c68f;
+	--bg-color: #fae7c9;
+	--white: #ffffff; */
+
+	/* --primary: #162660;
+	--accent-soft: #d0e6fd;
+	--bg-color: #f1e4d1;
+	--white: #ffffff; */
+
+	/* --primary: #3d402f;
+	--accent-soft: #fcf9d8;
+	--bg-color: #c99fcd;
+	--white: #ffffff; */
+
+	/* --primary: #3d402f;
+	--accent-soft: #c99fcd;
+	--bg-color: #fcf9d8;
+	--white: #ffffff; */
 }
 
 body {
