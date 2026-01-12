@@ -13,8 +13,10 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@fastify/cookie": "^11.0.2",
     "@fastify/env": "^5.0.3",
     "@fastify/formbody": "^8.0.2",
+    "@fastify/session": "^11.1.1",
     "@fastify/static": "^9.0.0",
     "@fastify/view": "^11.1.1",
     "@google/genai": "^1.35.0",
