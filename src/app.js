@@ -1,5 +1,7 @@
 import Fastify from 'fastify';
-import fastifyEnv from '@fastify/env'; // 1. Import du plugin
+import fastifyEnv from '@fastify/env';
+import fastifyCookie from '@fastify/cookie';
+import fastifySession from '@fastify/session';
 import secondRoute from './routes/second-route.js';
 import postsRoutes from './routes/post-routes.js';
 import findPlacesPlugin from './plugins/placeAPI.js';
@@ -10,39 +12,46 @@ import { dirname, join } from 'path';
 
 const fastify = Fastify({ logger: true });
 
-// 2. Définition du schéma basé sur ton .env
+// SCHEMAS D ABORD
 const schema = {
 	type: 'object',
-	required: ['PLACES_API_KEY', 'GEMINI_API_KEY'], // Les clés critiques
+	required: ['PLACES_API_KEY', 'SESSION_SECRET'],
 	properties: {
 		PLACES_API_KEY: { type: 'string' },
 		GEMINI_API_KEY: { type: 'string' },
-		SERVICE_ACCOUNT_EMAIL: { type: 'string' },
-		GOOGLE_SHEET_ID: { type: 'string' },
+		SESSION_SECRET: { type: 'string' },
 		PORT: { type: 'string', default: '3000' },
 	},
 };
 
 const start = async () => {
 	try {
-		// 3. Charger l'environnement AVANT les autres plugins
+		// CHARGER L'ENVIRONNEMENT
 		await fastify.register(fastifyEnv, {
 			schema,
 			dotenv: true,
 		});
 
-		// Maintenant fastify.config est disponible
+		// ENREGISTRER LES COOKIES ET SESSIONS APRES L ENVIRONNEMENT
+		await fastify.register(fastifyCookie);
+		await fastify.register(fastifySession, {
+			secret: fastify.config.SESSION_SECRET,
+			cookie: {
+				secure: false, // false pour localhost
+				maxAge: 1800000, //30 minutes
+			},
+		});
 
-		fastify.register(fastifyStatic, {
+		// PLUGINS ET STATIQUES
+		await fastify.register(fastifyStatic, {
 			root: join(dirname(fileURLToPath(import.meta.url)), '..', 'public'),
 			prefix: '/public/',
 		});
 
-		// ENREGISTREMENT DES PLUGINS
-		fastify.register(viewPlugin);
-		fastify.register(findPlacesPlugin); // Ce plugin pourra utiliser fastify.config.PLACES_API_KEY
+		await fastify.register(viewPlugin);
+		await fastify.register(findPlacesPlugin);
 
-		// DÉCLARATION DES ROUTES
+		// ROUTES
 		fastify.get('/', async (request, reply) => {
 			return reply.view('index.ejs');
 		});
@@ -50,13 +59,13 @@ const start = async () => {
 		fastify.register(secondRoute);
 		fastify.register(postsRoutes);
 
-		// DÉMARRER LE SERVEUR
+		// DÉMARRAGE
 		await fastify.listen({
 			port: Number(fastify.config.PORT) || 3000,
 			host: '0.0.0.0',
 		});
 
-		console.log(`🚀 MapScout démarré sur http://localhost:${fastify.config.PORT}`);
+		console.log(`MapScout démarré sur http://localhost:${fastify.config.PORT}`);
 	} catch (err) {
 		fastify.log.error(err);
 		process.exit(1);

@@ -6,8 +6,17 @@ export default async function postRoutes(fastify, options) {
 
 		try {
 			const places = await fastify.findPlaces(type, radius, longitude, latitude);
-			return reply.view('results', {
-				results: places,
+
+			request.session.searchData = places; // Stocker les résultats dans la session
+			if (!places) {
+				return reply.code(400).send({
+					status: 'failed',
+					message: 'Un probleme est survenu.',
+				});
+			}
+			return reply.code(200).send({
+				status: 'success',
+				message: 'Recherche terminé.',
 			});
 		} catch (error) {
 			fastify.log.error(error);
