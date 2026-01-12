@@ -1,22 +1,24 @@
-<div class="results-header" style="margin: 2rem 0 1rem 0">
-	<h3><%= results.length %> opportunités détectées</h3>
-</div>
-
-<div class="results-grid">
-	<% if (results.length === 0) { %>
-	<div class="card" style="grid-column: 1 / -1; text-align: center">
-		<p>Aucun établissement sans site web trouvé dans cette zone.</p>
+<section id="resultsContainer">
+	<div class="results-header" style="margin: 2rem 0 1rem 0">
+		<h3><%= results.length %> opportunités détectées</h3>
 	</div>
-	<% } else { %> <% results.forEach(place => { %>
-	<div class="card">
-		<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem">
-			<strong style="font-size: 1.1rem"><%= place.name %></strong>
-			<span class="badge-no-web">SANS SITE WEB</span>
+
+	<div class="results-grid">
+		<% if (results.length === 0) { %>
+		<div class="card" style="grid-column: 1 / -1; text-align: center">
+			<p>Aucun établissement sans site web trouvé dans cette zone.</p>
 		</div>
-		<p style="font-size: 0.9rem; margin: 0.5rem 0"><span class="bolder-text">Localisation :</span> <%= place.address %></p>
-		<p style="font-size: 0.9rem; margin: 0.5rem 0"><span class="bolder-text">Téléphone :</span> <%= place.phoneNumber || 'Non disponible' %></p>
+		<% } else { %> <% results.forEach(place => { %>
+		<div class="card">
+			<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem">
+				<strong style="font-size: 1.1rem"><%= place.name %></strong>
+				<span class="badge-no-web">SANS SITE WEB</span>
+			</div>
+			<p style="font-size: 0.9rem; margin: 0.5rem 0"><span class="bolder-text">Localisation :</span> <%= place.address %></p>
+			<p style="font-size: 0.9rem; margin: 0.5rem 0"><span class="bolder-text">Téléphone :</span> <%= place.phoneNumber || 'Non disponible' %></p>
 
-		<button class="btn-action" style="background: transparent; border: 2px solid var(--primary); color: var(--primary)">Générer un message</button>
+			<button class="btn-action" style="background: transparent; border: 2px solid var(--primary); color: var(--primary)">Générer un message</button>
+		</div>
+		<% }) %> <% } %>
 	</div>
-	<% }) %> <% } %>
-</div>
+</section>
