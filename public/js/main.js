@@ -43,56 +43,42 @@ const btnScan = document.getElementById('btnScan');
 const resultsContainer = document.getElementById('resultsContainer');
 
 prospectForm.addEventListener('submit', async (e) => {
-	e.preventDefault();
+    e.preventDefault();
 
-	// 1. Validation : Vérifier qu'au moins un type est sélectionné
-	if (selectedTypes.size === 0) {
-		alert("Choisissez au moins un secteur d'activité.");
-		return;
-	}
+    if (selectedTypes.size === 0) {
+        alert("Choisissez au moins un secteur d'activité.");
+        return;
+    }
 
-	// 2. Préparation des données
-	const payload = {
-		type: Array.from(selectedTypes),
-		radius: parseInt(document.getElementById('radius').value, 10),
-		latitude: parseFloat(document.getElementById('lat').value),
-		longitude: parseFloat(document.getElementById('lng').value),
-	};
+    const payload = {
+        type: Array.from(selectedTypes),
+        radius: parseInt(document.getElementById('radius').value, 10),
+        latitude: parseFloat(document.getElementById('lat').value),
+        longitude: parseFloat(document.getElementById('lng').value),
+    };
 
-	// 3. État de chargement UI
-	btnScan.disabled = true;
-	btnScan.innerHTML = '<span class="spinner"></span> Recherche en cours...';
-	resultsContainer.style.opacity = '0.5';
+    btnScan.disabled = true;
+    btnScan.innerHTML = 'Recherche en cours...';
 
-	try {
-		// 4. Envoi au serveur avec Fetch
-		const response = await fetch('/scan', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(payload), // Fetch nécessite de transformer l'objet en JSON
-		});
+    try {
+        const response = await fetch('/scan', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
 
-		// 5. Vérification du statut de la réponse
-		if (!response.ok) {
-			// Si le serveur renvoie une erreur (ex: 400 ou 500)
-			const errorData = await response.json().catch(() => ({}));
-			throw new Error(errorData.message || `Erreur serveur : ${response.status}`);
-		}
-
-		// 6. Récupération du HTML (le serveur renvoie le rendu de result.ejs)
-		const htmlResults = await response.text();
-
-		// 7. Injection et UI
-		resultsContainer.innerHTML = htmlResults;
-		resultsContainer.style.opacity = '1';
-		resultsContainer.scrollIntoView({ behavior: 'smooth' });
-	} catch (error) {
-		console.error('Erreur Fetch:', error);
-		alert(error.message || 'Une erreur est survenue lors du scan.');
-	} finally {
-		btnScan.disabled = false;
-		btnScan.innerHTML = 'Lancer le scan';
-	}
+        if (response.ok) {
+            // L'API a fini son travail et a stocké les données en session
+            // On demande maintenant au navigateur de changer de page
+            window.location.href = '/results'; 
+        } else {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Erreur lors du scan');
+        }
+    } catch (error) {
+        console.error('Erreur:', error);
+        alert(error.message);
+        btnScan.disabled = false;
+        btnScan.innerHTML = 'Lancer le scan';
+    }
 });
