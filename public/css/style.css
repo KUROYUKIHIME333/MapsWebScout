@@ -247,7 +247,21 @@ input[type='number'] {
 	color: var(--white);
 	border-color: var(--primary);
 }
-
+.ol-popup {
+	position: absolute;
+	background-color: var(--white);
+	padding: 10px;
+	border-radius: 8px;
+	border: 1px solid var(--accent-soft);
+	bottom: 12px;
+	left: -50%;
+	transform: translateX(-50%);
+	min-width: 150px;
+	pointer-events: none;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	z-index: 10000;
+	display: none; /* Caché par défaut */
+}
 .ol-zoom {
 	top: 65px !important;
 	left: 15px !important;
