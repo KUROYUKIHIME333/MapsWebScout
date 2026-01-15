@@ -66,5 +66,5 @@ if (navigator.geolocation) {
 function switchLayer(type) {
 	tileLayer.setSource(type === 'plan' ? planSource : satSource);
 	document.querySelectorAll('.layer-btn').forEach((btn) => btn.classList.remove('active'));
-	event.target.classList.add('active');
+	e.target.classList.add('active');
 }
