@@ -40,7 +40,17 @@
 			</div>
 		</div>
 
-		<div id="mapSelection" class="map"></div>
+		<div class="map-selection">
+			<h2>Selectionner la reference</h2>
+
+			<div>
+				<div id="map"></div>
+				<div class="layer-switcher">
+					<button class="layer-btn active" onclick="switchLayer('plan')">Plan</button>
+					<button class="layer-btn" onclick="switchLayer('sat')">Satellite</button>
+				</div>
+			</div>
+		</div>
 
 		<div class="button-container">
 			<button type="submit" id="btnScan" class="btn-action">Lancer le scan</button>
@@ -48,4 +58,5 @@
 	</form>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
 <script src="/public/js/mapSelection.js"></script>
