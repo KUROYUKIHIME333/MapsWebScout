@@ -65,7 +65,7 @@ const start = async () => {
 			host: '0.0.0.0',
 		});
 
-		console.log(`MapScout démarré sur http://localhost:${fastify.config.PORT}`);
+		console.log(`MapsWebScout démarré sur http://localhost:${fastify.config.PORT}`);
 	} catch (err) {
 		fastify.log.error(err);
 		process.exit(1);
