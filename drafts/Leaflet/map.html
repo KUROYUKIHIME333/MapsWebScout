@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sélecteur de Prospection Locale</title>
+
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+		<link rel="stylesheet" href="map.css" />
+	</head>
+	<body>
+		<div class="card">
+			<h2>Cible de prospection</h2>
+			<p>Cliquez sur la carte pour définir la zone de recherche.</p>
+
+			<div id="map"></div>
+
+			<div class="inputs-row">
+				<div class="input-group">
+					<label>Latitude</label>
+					<input type="text" id="lat" placeholder="En attente..." readonly />
+				</div>
+				<div class="input-group">
+					<label>Longitude</label>
+					<input type="text" id="lng" placeholder="En attente..." readonly />
+				</div>
+			</div>
+			<p class="info-text">La carte utilise votre position actuelle (si autorisée).</p>
+		</div>
+
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+		<script src="map.js"></script>
+	</body>
+</html>
