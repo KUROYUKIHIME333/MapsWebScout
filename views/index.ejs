@@ -26,7 +26,7 @@
 			<div class="chip" data-value="moving_company">Déménageurs</div>
 		</div>
 
-		<label for="radius">Rayon de recherche (mètres)</label>
+		<label for="radius">Rayon de recherche (en mètres)</label>
 		<input type="number" name="radius" id="radius" value="2000" min="100" required />
 
 		<div style="display: flex; gap: 10px">
@@ -40,6 +40,12 @@
 			</div>
 		</div>
 
-		<button type="submit" id="btnScan" class="btn-action">Lancer le scan</button>
+		<div id="mapSelection" class="map"></div>
+
+		<div class="button-container">
+			<button type="submit" id="btnScan" class="btn-action">Lancer le scan</button>
+		</div>
 	</form>
 </section>
+
+<script src="/public/js/mapSelection.js"></script>
