@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sélecteur OpenLayers - Prospection</title>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css" />
+		<link rel="stylesheet" href="mapSelect.css" />
+	</head>
+	<body>
+		<div class="card">
+			<h2 style="margin-top: 0"> Zone de Recherche </h2>
+
+			<div style="position: relative">
+				<div id="map"></div>
+				<div class="layer-switcher">
+					<button class="layer-btn active" onclick="switchLayer('plan')">Plan</button>
+					<button class="layer-btn" onclick="switchLayer('sat')">Satellite</button>
+				</div>
+			</div>
+
+			<div class="inputs-row">
+				<div class="input-group">
+					<label>Latitude</label>
+					<input type="text" id="lat" readonly />
+				</div>
+				<div class="input-group">
+					<label>Longitude</label>
+					<input type="text" id="lng" readonly />
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+
+		<script src="mapSelect.js"></script>
+	</body>
+</html>
