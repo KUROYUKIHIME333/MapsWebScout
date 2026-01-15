@@ -5,7 +5,6 @@ import { placeNearbyApiUrl } from '../../apiUrls.js';
 export default fp(async (fastify) => {
 	fastify.decorate('findPlaces', async (type = [], radius = 0, longitude = 0, latitude = 0) => {
 		try {
-			// Utilisation de la config validée par @fastify/env
 			const apiKey = fastify.config.PLACES_API_KEY;
 
 			const headers = {
@@ -20,7 +19,7 @@ export default fp(async (fastify) => {
 			}
 
 			const payload = {
-				includedTypes: type, // Correction : 'includedTypes' avec un 's'
+				includedTypes: type,
 				maxResultCount: 20,
 				locationRestriction: {
 					circle: {
@@ -37,13 +36,10 @@ export default fp(async (fastify) => {
 
 			console.log("Réponse complète de l'API Google Places:", response.data); //TODO: Supprimer après débogage
 
-			// Sécurité : Si Google ne trouve rien, 'places' peut être undefined
 			const allPlaces = response.data.places || [];
 
-			// Filtrage des établissements sans site web
 			const responsesWithoutWebsites = allPlaces.filter((place) => !place.websiteUri);
 
-			// Mapping propre pour ton EJS
 			return responsesWithoutWebsites.map((place) => ({
 				id: place.id,
 				name: place.displayName?.text || 'Nom inconnu',

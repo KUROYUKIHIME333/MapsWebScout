@@ -2,7 +2,7 @@ import Fastify from 'fastify';
 import fastifyEnv from '@fastify/env';
 import fastifyCookie from '@fastify/cookie';
 import fastifySession from '@fastify/session';
-import secondRoute from './routes/second-route.js';
+import secondRoute from './routes/get-route.js';
 import postsRoutes from './routes/post-routes.js';
 import findPlacesPlugin from './plugins/placeAPI.js';
 import viewPlugin from './plugins/views.js';
