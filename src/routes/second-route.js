@@ -12,6 +12,7 @@ export default async function routes(fastify, options) {
 
 	fastify.get('/results', async (request, reply) => {
 		const places = request.session.searchData || [];
+		console.log(JSON.stringify(places)); // TODO: Remove after debugging
 
 		return reply.view('results', { results: places });
 	});
