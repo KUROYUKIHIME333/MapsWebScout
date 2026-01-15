@@ -2,6 +2,11 @@
 	<div class="results-header" style="margin: 2rem 0 1rem 0">
 		<h3><%= results.length %> opportunités détectées</h3>
 	</div>
+	<div id="map" class="map"></div>
+	<div id="popup" class="ol-popup">
+		<div id="popup-content"></div>
+	</div>
+	<div id="data-container" data-leads="<%= JSON.stringify(results) %>" style="display: none"></div>
 
 	<div class="results-grid">
 		<% if (results.length === 0) { %>
@@ -22,3 +27,5 @@
 		<% }) %> <% } %>
 	</div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+<script src="/public/js/mapsDisplay.js"></script>
